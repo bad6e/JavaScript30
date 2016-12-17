@@ -41,9 +41,6 @@ function draw(e) {
   } else {
     ctx.lineWidth--;
   }
-  console.log(ctx.lineWidth);
-
-
 }
 
 canvas.addEventListener('mousemove', draw);
