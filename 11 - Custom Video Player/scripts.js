@@ -38,13 +38,13 @@ function scrub (e) {
   video.currentTime = scrubTime;
 }
 
-function changeScreenSize () {
-  if (video.requestFullscreen) {
-    video.requestFullscreen();
-  } else if (video.mozRequestFullScreen) {
-    video.mozRequestFullScreen();
-  } else if (video.webkitRequestFullscreen) {
+function changeScreenSize() {
+  if(document.webkitFullscreenElement) {
+    document.webkitCancelFullScreen()
+  } else {
     video.webkitRequestFullscreen();
+    video.style.width = window.screen.width;
+    video.style.height = window.screen.height;
   }
 }
 
