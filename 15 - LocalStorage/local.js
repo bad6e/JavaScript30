@@ -2,6 +2,7 @@ const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates');
 const clearAllButton = document.querySelector('.clear-all');
 const checkAllButton = document.querySelector('.check-all');
+const unCheckAllButton = document.querySelector('.un-check-all');
 let items = JSON.parse(localStorage.getItem('items')) || [];
 
 function addItem (e) {
@@ -33,6 +34,16 @@ function checkAll () {
   populateList(items, itemsList);
 }
 
+function unCheckAll () {
+  if (items.length > 0) {
+    items.map((item) => {
+      item.done = false;
+    });
+  }
+  localStorage.setItem('items', JSON.stringify(items));
+  populateList(items, itemsList);
+}
+
 function populateList (items = [], itemsList) {
   itemsList.innerHTML = items.map((item, i) => {
     return `
@@ -57,6 +68,7 @@ function toggleDone (e) {
 addItems.addEventListener('submit', addItem);
 clearAllButton.addEventListener('click', clearAll);
 checkAllButton.addEventListener('click', checkAll);
+unCheckAllButton.addEventListener('click', unCheckAll);
 itemsList.addEventListener('click', toggleDone);
 populateList(items, itemsList);
 
