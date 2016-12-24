@@ -24,20 +24,11 @@ function clearAll () {
   populateList(items, itemsList);
 }
 
-function checkAll () {
+function check () {
   if (items.length > 0) {
     items.map((item) => {
-      item.done = true;
-    });
-  }
-  localStorage.setItem('items', JSON.stringify(items));
-  populateList(items, itemsList);
-}
-
-function unCheckAll () {
-  if (items.length > 0) {
-    items.map((item) => {
-      item.done = false;
+      const boolean = (this.dataset.boolean === 'true');
+      item.done = boolean;
     });
   }
   localStorage.setItem('items', JSON.stringify(items));
@@ -67,8 +58,8 @@ function toggleDone (e) {
 
 addItems.addEventListener('submit', addItem);
 clearAllButton.addEventListener('click', clearAll);
-checkAllButton.addEventListener('click', checkAll);
-unCheckAllButton.addEventListener('click', unCheckAll);
+checkAllButton.addEventListener('click', check);
+unCheckAllButton.addEventListener('click', check);
 itemsList.addEventListener('click', toggleDone);
 populateList(items, itemsList);
 
