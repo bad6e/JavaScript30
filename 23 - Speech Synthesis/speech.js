@@ -7,7 +7,6 @@ const stopButton = document.querySelector('#stop');
 
 msg.text = document.querySelector('[name="text"]').value;
 
-
 function populateVoices() {
   voices = this.getVoices();
   voicesDropdown.innerHTML = voices
@@ -38,5 +37,4 @@ speechSynthesis.addEventListener('voiceschanged', populateVoices);
 voicesDropdown.addEventListener('change', setVoice);
 options.forEach(option => option.addEventListener('change', setOption));
 speakButton.addEventListener('click', toggle);
-// stopButton.addEventListener('click', toggle.bind(null, false));
 stopButton.addEventListener('click', () => toggle(false));
